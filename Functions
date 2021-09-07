@@ -1,0 +1,61 @@
+
+char *likes(size_t n, const char *const names[n]) {
+
+    char *likes = " like this";
+    int size = strlen(likes);
+    char *full;
+
+    if (n == 0) {
+        char *no = "no one likes this";
+        return no;
+
+    }
+    else if(n==1){
+        char *like = " likes this";
+        full = (char *) malloc(strlen(like)+ strlen(names[0])-1);
+        strcpy(full,names[0]);
+        strcat(full,like);
+        return full;
+    }
+    else if(n==2){
+        full = (char *) malloc(size+ strlen(names[0])+ strlen(names[1]));
+        strcpy(full,names[0]);
+        strcat(strcat(strcat(full," and "),names[1]),likes);
+        return full;
+    }
+    else if(n==3){
+        full = (char *) malloc(size+ strlen(names[0])+ strlen(names[1])+ strlen(names[2]));
+        strcpy(full,names[0]);
+        strcat(strcat(strcat(strcat(strcat(full,", "),names[1])," and "),names[2]),likes);
+        return full;
+    }
+    else{
+        char *others = "2 others like this";
+        full = (char *) malloc(size+ strlen(names[0])+ strlen(names[1])+ strlen(others));
+        *full=0;
+        strcpy(full,names[0]);
+        strcat(strcat(strcat(strcat(full,", "),names[1])," and "),others);
+        return full;
+    }
+}
+
+char *Alter(const char* string){
+
+    int modify = 32,i=0;
+    char *altered = (char *) malloc(strlen(string)+1);
+    *altered=0;
+
+    while(*string){
+        if(*string>='A'&&*string<='Z'){
+            *(altered+i)= (char)(*string + modify);
+        }
+        else if (*string>='a'&&*string<='z'){
+            *(altered+i)=(char)(*string - modify);
+        }
+        else
+            *(altered+i)=*string;
+        string++,i++;
+    }
+    *(altered+i)='\0';
+    return altered;
+}

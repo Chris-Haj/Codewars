@@ -1,0 +1,32 @@
+
+struct item{
+    char *name;
+    int quantity;
+    float price;
+    float amount;
+};
+
+void readItem(struct item *Item);
+void printItem(struct item *Item);
+
+void readItem(struct item *Item){
+    Item->name = (char *) calloc(30, sizeof(char));
+    printf("Please pass in the item name, price, and quantity\n");
+    printf("Name: \n");
+    scanf("%s",Item->name);
+    printf("Price: \n");
+    scanf("%f",&Item->price);
+    printf("Quantity: \n");
+    scanf("%d",&Item->quantity);
+    Item->amount=Item->price*(float)Item->quantity;
+
+}
+
+void printItem(struct item *Item){
+    printf("Name of item: %s\n",Item->name);
+    printf("Price of item: %0.2f \n",Item->price);
+    printf("Quantity of item: %d\n",Item->quantity);
+
+}
+------------------------------------------------------------------------------------------------------
+
