@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 struct Hash{
     char letter;
@@ -18,8 +19,14 @@ int main(){
     if(f!=NULL){
        intialize();
        countletters(f);
+       bool space = false;
        for(int i=0;i<26;i++){
-           printf("Count of letter %c is %d\n",Stats[i].letter,Stats[i].count);
+           printf("Count of letter %c is %d",Stats[i].letter,Stats[i].count);
+           if(space == false)
+               printf("\t");
+           else
+               printf("\n");
+           space = !space;
        }
     }
     else{
